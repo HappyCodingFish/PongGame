@@ -1,14 +1,16 @@
 # Part 1: Getting start
 import turtle
 import time
-from Equipments import Paddle, Ball
+from Equipments import *
 
 width, height = 1024, 768
+score_l, score_r = 0, 0
 
 # Create paddle and ball objectss
 paddle_a = Paddle((-width/2*7/8, 0))
 paddle_b = Paddle((width/2*7/8, 0))
 ball_1 = Ball(size=10, speed=4)
+pen = Pen((0, height/2*4/5))
 
 # Set up window
 window = turtle.Screen()
@@ -34,8 +36,15 @@ while True:
     time.sleep(.001)
 
     # Border checking
-    # ball_1.bounce_paddle() <--------------- Stopped here
-    ball_1.touch_border(width, height)
+    ball_1.touch_border_y(height)
+    score = ball_1.touch_border_x(width)
+    if score:
+        if score > 0:
+            score_r += 1
+            pen.updateScore(score_l, score_r)
+        else:
+            score_l += 1
+            pen.updateScore(score_l, score_r)
     ball_1.bounce_paddle(paddle_a)
     ball_1.bounce_paddle(paddle_b)
 
