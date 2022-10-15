@@ -3,6 +3,7 @@ import turtle
 import time
 from Equipments import *
 
+
 width, height = 1024, 768
 score_l, score_r = 0, 0
 
@@ -41,11 +42,10 @@ while True:
     if score:
         if score > 0:
             score_r += 1
-            pen.updateScore(score_l, score_r)
+            pen.updateBoard(score_l, score_r, ball_1.hits)
         else:
             score_l += 1
-            pen.updateScore(score_l, score_r)
-    ball_1.bounce_paddle(paddle_a)
-    ball_1.bounce_paddle(paddle_b)
-
+            pen.updateBoard(score_l, score_r, ball_1.hits)
+    if ball_1.bounce_paddle(paddle_a): pen.updateBoard(score_l, score_r, ball_1.hits)
+    if ball_1.bounce_paddle(paddle_b): pen.updateBoard(score_l, score_r, ball_1.hits)
     # Paddles touching
