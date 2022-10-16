@@ -10,7 +10,7 @@ score_l, score_r = 0, 0
 # Create paddle and ball objectss
 paddle_a = Paddle((-width/2*7/8, 0))
 paddle_b = Paddle((width/2*7/8, 0))
-ball_1 = Ball(size=10, speed=4)
+ball_1 = Ball(size=1, speed=4)
 pen = Pen((0, height/2*4/5))
 
 # Set up window
